@@ -1,0 +1,40 @@
+URL url = null;
+try {
+    url = new URL(String[0]);
+} catch (MalformedURLException e) {
+    e.printStackTrace();
+}
+URLConnection connection = null;
+try {
+    connection = url.openConnection();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+InputStreamReader inputStreamReader = null;
+try {
+    inputStreamReader = new InputStreamReader((connection.getInputStream()));
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+String line = null;
+
+
+try {
+    line = bufferedReader.readLine();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+
+int i = 0;
+while(i < 20){
+    try {
+        line += bufferedReader.readLine();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    i++;
+}
